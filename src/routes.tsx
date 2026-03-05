@@ -16,7 +16,7 @@ const lazyLoad = (path: string) => {
   // Handle different paths based on the route
   let key: string;
   if (path === "/") {
-    key = "./pages/page.tsx";
+    key = "./pages/auth/sign-in/page.tsx";
   } else if (path.startsWith("/auth")) {
     key = `./pages/auth${path.substring(5)}/page.tsx`; // Remove "/auth"
   } else {
@@ -28,7 +28,9 @@ const lazyLoad = (path: string) => {
   // If file not found fallback to 404
   if (!importer) return <Navigate to="/404" replace />;
 
-  const Component = React.lazy(importer as () => Promise<{ default: React.ComponentType<any> }>);
+  const Component = React.lazy(
+    importer as () => Promise<{ default: React.ComponentType<any> }>,
+  );
 
   return (
     <React.Suspense fallback={<Loading />}>
@@ -38,7 +40,9 @@ const lazyLoad = (path: string) => {
 };
 
 // Recursively generate routes from menu items
-const generateRoutesFromMenuItems = (menuItems: MenuItem[]): React.ReactElement[] => {
+const generateRoutesFromMenuItems = (
+  menuItems: MenuItem[],
+): React.ReactElement[] => {
   return menuItems.flatMap((item: MenuItem) => {
     const routes: React.ReactElement[] = [];
 
@@ -48,7 +52,9 @@ const generateRoutesFromMenuItems = (menuItems: MenuItem[]): React.ReactElement[
     }
 
     // Add route for current item
-    routes.push(<Route key={item.id} path={item.href} element={lazyLoad(item.href)} />);
+    routes.push(
+      <Route key={item.id} path={item.href} element={lazyLoad(item.href)} />,
+    );
 
     // Add routes for children
     if (item.children && item.children.length > 0) {
@@ -64,13 +70,41 @@ const generateAuthRoutes = (): React.ReactElement[] => {
   return [
     <Route key="sign-in" path="sign-in" element={lazyLoad("/auth/sign-in")} />,
     <Route key="sign-up" path="sign-up" element={lazyLoad("/auth/sign-up")} />,
-    <Route key="password-reset" path="password-reset" element={lazyLoad("/auth/password-reset")} />,
-    <Route key="password-sent" path="password-sent" element={lazyLoad("/auth/password-sent")} />,
-    <Route key="password-new" path="password-new" element={lazyLoad("/auth/password-new")} />,
-    <Route key="get-verification" path="get-verification" element={lazyLoad("/auth/get-verification")} />,
-    <Route key="set-verification" path="set-verification" element={lazyLoad("/auth/set-verification")} />,
-    <Route key="terms-and-conditions" path="terms-and-conditions" element={lazyLoad("/auth/terms-and-conditions")} />,
-    <Route key="privacy-policy" path="privacy-policy" element={lazyLoad("/auth/privacy-policy")} />,
+    <Route
+      key="password-reset"
+      path="password-reset"
+      element={lazyLoad("/auth/password-reset")}
+    />,
+    <Route
+      key="password-sent"
+      path="password-sent"
+      element={lazyLoad("/auth/password-sent")}
+    />,
+    <Route
+      key="password-new"
+      path="password-new"
+      element={lazyLoad("/auth/password-new")}
+    />,
+    <Route
+      key="get-verification"
+      path="get-verification"
+      element={lazyLoad("/auth/get-verification")}
+    />,
+    <Route
+      key="set-verification"
+      path="set-verification"
+      element={lazyLoad("/auth/set-verification")}
+    />,
+    <Route
+      key="terms-and-conditions"
+      path="terms-and-conditions"
+      element={lazyLoad("/auth/terms-and-conditions")}
+    />,
+    <Route
+      key="privacy-policy"
+      path="privacy-policy"
+      element={lazyLoad("/auth/privacy-policy")}
+    />,
   ];
 };
 
