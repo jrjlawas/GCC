@@ -1,9 +1,30 @@
-import { cn } from "@/lib/utils";
+// import { cn } from "@/lib/utils";
+import gcc_logo from "@/images/gcc_logo.svg";
 
-export default function Logo({ classNameFull, classNameMobile }: { classNameFull?: string; classNameMobile?: string }) {
+export default function Logo({
+  classNameFull,
+  classNameMobile,
+}: {
+  classNameFull?: string;
+  classNameMobile?: string;
+}) {
   return (
     <>
-      <svg
+      <img
+        src={gcc_logo}
+        width="150"
+        height="27"
+        className={classNameFull}
+        alt="Logo"
+      />
+      <img
+        src={gcc_logo}
+        width="22"
+        height="27"
+        className={classNameMobile}
+        alt="Logo"
+      />
+      {/* <svg
         className={cn("fill-current", classNameFull)}
         width="91"
         height="27"
@@ -32,9 +53,19 @@ export default function Logo({ classNameFull, classNameMobile }: { classNameFull
           fill="url(#paint0_linear_8328_30318)"
         />
         <defs>
-          <linearGradient id="paint0_linear_8328_30318" x1="11" y1="0" x2="11" y2="27" gradientUnits="userSpaceOnUse">
+          <linearGradient
+            id="paint0_linear_8328_30318"
+            x1="11"
+            y1="0"
+            x2="11"
+            y2="27"
+            gradientUnits="userSpaceOnUse"
+          >
             <stop style={{ stopColor: "hsl(var(--primary-light))" }} />
-            <stop offset="1" style={{ stopColor: "hsl(var(--primary-dark))" }} />
+            <stop
+              offset="1"
+              style={{ stopColor: "hsl(var(--primary-dark))" }}
+            />
           </linearGradient>
         </defs>
       </svg>
@@ -52,12 +83,22 @@ export default function Logo({ classNameFull, classNameMobile }: { classNameFull
           fill="url(#paint0_linear_8328_30325)"
         />
         <defs>
-          <linearGradient id="paint0_linear_8328_30325" x1="11" y1="0" x2="11" y2="27" gradientUnits="userSpaceOnUse">
+          <linearGradient
+            id="paint0_linear_8328_30325"
+            x1="11"
+            y1="0"
+            x2="11"
+            y2="27"
+            gradientUnits="userSpaceOnUse"
+          >
             <stop style={{ stopColor: "hsl(var(--primary-light))" }} />
-            <stop offset="1" style={{ stopColor: "hsl(var(--primary-dark))" }} />
+            <stop
+              offset="1"
+              style={{ stopColor: "hsl(var(--primary-dark))" }}
+            />
           </linearGradient>
         </defs>
-      </svg>
+      </svg> */}
     </>
   );
 }

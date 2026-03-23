@@ -1,6 +1,7 @@
 import { useFormik } from "formik";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+// import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as yup from "yup";
 
 import {
@@ -20,16 +21,13 @@ import {
 } from "@mui/material";
 
 import Logo from "@/components/logo/logo";
-import { DEFAULTS } from "@/config";
+// import { DEFAULTS } from "@/config";
 import NiCrossSquare from "@/icons/nexture/ni-cross-square";
 import NiEyeClose from "@/icons/nexture/ni-eye-close";
 import NiEyeOpen from "@/icons/nexture/ni-eye-open";
 
 const validationSchema = yup.object({
-  email: yup
-    .string()
-    .required("The field is required")
-    .email("Enter a valid email"),
+  username: yup.string().required("The field is required"),
   password: yup.string().required("The field is required"),
 });
 
@@ -53,18 +51,18 @@ const InputErrorTooltip = ({ title }: InputErrorProps) => {
 };
 
 export default function Page() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [submitted, setSubmitted] = useState(false);
 
   const formik = useFormik({
     initialValues: {
-      email: "",
+      username: "",
       password: "",
     },
     validationSchema,
     onSubmit: (values) => {
       console.log(JSON.stringify(values, null, 2));
-      navigate(DEFAULTS.appRoot);
+      // navigate(DEFAULTS.appRoot);
     },
     validateOnBlur: false,
     validateOnMount: false,
@@ -124,16 +122,16 @@ export default function Page() {
                     size="small"
                   >
                     <FormLabel component="label" className="flex flex-row">
-                      Email
-                      {formik.touched.email && formik.errors.email && (
-                        <InputErrorTooltip title={formik.errors.email} />
+                      ClientID
+                      {formik.touched.username && formik.errors.username && (
+                        <InputErrorTooltip title={formik.errors.username} />
                       )}
                     </FormLabel>
                     <Input
-                      id="email"
-                      name="email"
+                      id="username"
+                      name="username"
                       placeholder=""
-                      value={formik.values.email}
+                      value={formik.values.username}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                     />
@@ -214,12 +212,12 @@ export default function Page() {
                     </Alert>
                   )}
                   <Box className="flex flex-col gap-2">
-                    <Link
+                    {/* <Link
                       to="/auth/password-reset"
                       className="link-text-secondary link-underline-hover text-center text-sm font-semibold"
                     >
                       Reset Password
-                    </Link>
+                    </Link> */}
                     <Button type="submit" variant="contained" className="mb-4">
                       Continue
                     </Button>
