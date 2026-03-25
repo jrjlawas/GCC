@@ -2,7 +2,13 @@ import { t } from "i18next";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { Box, Button, Drawer, Typography, useScrollTrigger } from "@mui/material";
+import {
+  Box,
+  Button,
+  Drawer,
+  // Typography,
+  useScrollTrigger,
+} from "@mui/material";
 
 import Logo from "@/components/logo/logo";
 import { LINKS } from "@/constants";
@@ -28,7 +34,9 @@ function ElevationScroll(props: ScrollProps) {
 
   return children
     ? React.cloneElement(children, {
-        className: trigger ? cn(className, "bg-background-paper shadow-xs") : cn(className, "bg-background"),
+        className: trigger
+          ? cn(className, "bg-background-paper shadow-xs")
+          : cn(className, "bg-background"),
       })
     : null;
 }
@@ -46,14 +54,17 @@ export default function LPHeader({ className }: Props) {
         className,
       )}
     >
-      <Box component="header" className="bg-background fixed top-0 flex h-20 w-full items-center justify-center">
+      <Box
+        component="header"
+        className="bg-background fixed top-0 flex h-20 w-full items-center justify-center"
+      >
         <Box className="lp-contained-container flex flex-row justify-between">
           {/* Logo */}
           <Box className="flex flex-row items-center gap-2.5">
-            <Logo classNameMobile="hidden" />
-            <Typography className="border-primary text-primary rounded-[8px] border px-1.5 py-1 text-sm leading-3 font-bold">
+            {/* <Logo classNameMobile="hidden" /> */}
+            {/* <Typography className="border-primary text-primary rounded-[8px] border px-1.5 py-1 text-sm leading-3 font-bold">
               VITE
-            </Typography>
+            </Typography> */}
           </Box>
 
           {/* Desktop navigation */}
@@ -154,9 +165,9 @@ export default function LPHeader({ className }: Props) {
 
               <Box className="flex flex-row items-center gap-2.5 ps-4">
                 <Logo classNameMobile="hidden" />
-                <Typography className="border-primary text-primary rounded-[8px] border px-1.5 py-1 text-sm leading-3 font-bold">
+                {/* <Typography className="border-primary text-primary rounded-[8px] border px-1.5 py-1 text-sm leading-3 font-bold">
                   VITE
-                </Typography>
+                </Typography> */}
               </Box>
               <Box className="flex flex-col gap-1">
                 <Button

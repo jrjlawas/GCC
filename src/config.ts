@@ -4,7 +4,7 @@ import { ContentType, MenuType } from "@/types/types";
 export const DEFAULTS = {
   appRoot: "/dashboards/default",
   locale: "en",
-  themeColor: "theme-purple" as ThemeVariant,
+  themeColor: "theme-blue" as ThemeVariant,
   themeMode: "system" as ModeVariant,
   contentType: ContentType.Boxed,
   leftMenuType: MenuType.Comfort,

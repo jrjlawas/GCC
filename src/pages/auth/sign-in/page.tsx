@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import { useState } from "react";
-// import { Link, useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import * as yup from "yup";
 
 import {
@@ -21,10 +21,12 @@ import {
 } from "@mui/material";
 
 import Logo from "@/components/logo/logo";
-// import { DEFAULTS } from "@/config";
+import { DEFAULTS } from "@/config";
 import NiCrossSquare from "@/icons/nexture/ni-cross-square";
 import NiEyeClose from "@/icons/nexture/ni-eye-close";
 import NiEyeOpen from "@/icons/nexture/ni-eye-open";
+// ✅ IMPORT AUTH SERVICE
+import { login } from "@/services/authService";
 
 const validationSchema = yup.object({
   username: yup.string().required("The field is required"),
@@ -51,21 +53,49 @@ const InputErrorTooltip = ({ title }: InputErrorProps) => {
 };
 
 export default function Page() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [submitted, setSubmitted] = useState(false);
 
+  const [apiError, setApiError] = useState<string>("");
+  const [loading, setLoading] = useState(false);
+
+  // const formik = useFormik({
+  //   initialValues: {
+  //     username: "",
+  //     password: "",
+  //   },
+  //   validationSchema,
+  //   onSubmit: (values) => {
+  //     console.log(JSON.stringify(values, null, 2));
+  //     navigate(DEFAULTS.appRoot);
+  //   },
+  //   validateOnBlur: false,
+  //   validateOnMount: false,
+  // });
   const formik = useFormik({
     initialValues: {
       username: "",
       password: "",
     },
     validationSchema,
-    onSubmit: (values) => {
-      console.log(JSON.stringify(values, null, 2));
-      // navigate(DEFAULTS.appRoot);
-    },
     validateOnBlur: false,
     validateOnMount: false,
+
+    // ✅ UPDATED SUBMIT
+    onSubmit: async (values) => {
+      setLoading(true);
+      setApiError("");
+
+      try {
+        await login(values.username, values.password);
+
+        navigate(DEFAULTS.appRoot);
+      } catch (error: any) {
+        setApiError(error.message || "Login failed");
+      } finally {
+        setLoading(false);
+      }
+    },
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -116,6 +146,17 @@ export default function Page() {
                   }}
                   className="flex flex-col"
                 >
+                  {/* ✅ API ERROR DISPLAY */}
+                  {apiError && (
+                    <Alert
+                      severity="error"
+                      className="mb-4"
+                      icon={<NiCrossSquare />}
+                    >
+                      <AlertTitle>Error</AlertTitle>
+                      {apiError}
+                    </Alert>
+                  )}
                   <FormControl
                     className="outlined"
                     variant="standard"
@@ -218,8 +259,16 @@ export default function Page() {
                     >
                       Reset Password
                     </Link> */}
-                    <Button type="submit" variant="contained" className="mb-4">
+                    {/* <Button type="submit" variant="contained" className="mb-4">
                       Continue
+                    </Button> */}
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      className="mb-4"
+                      disabled={loading}
+                    >
+                      {loading ? "Signing in..." : "Continue"}
                     </Button>
                   </Box>
 
