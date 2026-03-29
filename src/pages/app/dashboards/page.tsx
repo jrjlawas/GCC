@@ -10,13 +10,13 @@ export default function Page() {
     <Grid container spacing={5}>
       <Grid size={12} className="mb-2">
         <Typography variant="h1" component="h1" className="mb-0">
-          Dashboards
+          Dashboardssss
         </Typography>
         <Breadcrumbs>
           <Link color="inherit" to="/dashboards/default">
             Home
           </Link>
-          <Typography variant="body2">Dashboards</Typography>
+          <Typography variant="body2">Dashboardssss</Typography>
         </Breadcrumbs>
       </Grid>
 

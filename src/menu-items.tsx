@@ -8,7 +8,7 @@ export const leftMenuItems: MenuItem[] = [
   {
     id: "dashboards",
     icon: "NiHome",
-    label: "menu-dashboards",
+    label: "Home",
     description: "menu-dashboards-description",
     color: "text-primary",
     href: "/dashboards",
@@ -806,7 +806,8 @@ export const leftMenuItems: MenuItem[] = [
               {
                 id: "data-grid-save-and-restore-state",
                 label: "menu-data-grid-save-and-restore-state",
-                description: "menu-data-grid-save-and-restore-state-description",
+                description:
+                  "menu-data-grid-save-and-restore-state-description",
                 href: "/ui/mui-x/data-grid/save-and-restore-state",
                 listIcon: "NiFloppyDisk",
               },
@@ -904,7 +905,8 @@ export const leftMenuItems: MenuItem[] = [
               {
                 id: "data-grid-aggregation-and-summary-rows",
                 label: "menu-data-grid-aggregation-and-summary-rows",
-                description: "menu-data-grid-aggregation-and-summary-rows-description",
+                description:
+                  "menu-data-grid-aggregation-and-summary-rows-description",
                 href: "/ui/mui-x/data-grid/aggregation-and-summary-rows",
                 listIcon: "NiSum",
               },
@@ -991,7 +993,8 @@ export const leftMenuItems: MenuItem[] = [
                 id: "date-time-picker-date-time-range",
                 label: "menu-date-time-picker-date-time-range",
                 href: "/ui/mui-x/date-time-picker/date-time-range",
-                description: "menu-date-time-picker-date-time-range-description",
+                description:
+                  "menu-date-time-picker-date-time-range-description",
                 listIcon: "NiCalendarClock",
               },
             ],
@@ -1470,142 +1473,156 @@ export const leftMenuItems: MenuItem[] = [
       },
     ],
   },
-  {
-    id: "external-link",
-    icon: "NiArrowUpRightSquare",
-    label: "menu-external-link",
-    color: "text-primary",
-    href: "https://themeforest.net/item/gogo-vite/22544383",
-    isExternalLink: true,
-  },
-  {
-    id: "multi-level",
-    label: "menu-multi-level",
-    icon: "NiDirectory",
-    color: "text-primary",
-    href: "/menu-levels",
-    children: [
-      { id: "level-two", label: "menu-level-two", icon: "NiStar", href: "/menu-levels/level-two" },
-      {
-        id: "level-two-subs",
-        label: "menu-level-two-subs",
-        href: "/menu-levels/level-two-subs",
-        icon: "NiStars",
-        children: [
-          { id: "level-three", label: "menu-level-three", href: "/menu-levels/level-two-subs/level-three" },
-          {
-            id: "level-three-subs",
-            label: "menu-level-three-subs",
-            href: "/menu-levels/level-two-subs/level-three-subs",
-            children: [
-              {
-                id: "level-four",
-                label: "menu-level-four",
-                href: "/menu-levels/level-two-subs/level-three-subs/level-four",
-              },
-              {
-                id: "level-four-subs",
-                label: "menu-level-four-subs",
-                href: "/menu-levels/level-two-subs/level-three-subs/level-four-subs",
-                children: [
-                  {
-                    id: "level-five",
-                    label: "menu-level-five",
-                    href: "/menu-levels/level-two-subs/level-three-subs/level-four-subs/level-five",
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
+  // {
+  //   id: "external-link",
+  //   icon: "NiArrowUpRightSquare",
+  //   label: "menu-external-link",
+  //   color: "text-primary",
+  //   href: "https://themeforest.net/item/gogo-vite/22544383",
+  //   isExternalLink: true,
+  // },
+  // {
+  //   id: "multi-level",
+  //   label: "menu-multi-level",
+  //   icon: "NiDirectory",
+  //   color: "text-primary",
+  //   href: "/menu-levels",
+  //   children: [
+  //     {
+  //       id: "level-two",
+  //       label: "menu-level-two",
+  //       icon: "NiStar",
+  //       href: "/menu-levels/level-two",
+  //     },
+  //     {
+  //       id: "level-two-subs",
+  //       label: "menu-level-two-subs",
+  //       href: "/menu-levels/level-two-subs",
+  //       icon: "NiStars",
+  //       children: [
+  //         {
+  //           id: "level-three",
+  //           label: "menu-level-three",
+  //           href: "/menu-levels/level-two-subs/level-three",
+  //         },
+  //         {
+  //           id: "level-three-subs",
+  //           label: "menu-level-three-subs",
+  //           href: "/menu-levels/level-two-subs/level-three-subs",
+  //           children: [
+  //             {
+  //               id: "level-four",
+  //               label: "menu-level-four",
+  //               href: "/menu-levels/level-two-subs/level-three-subs/level-four",
+  //             },
+  //             {
+  //               id: "level-four-subs",
+  //               label: "menu-level-four-subs",
+  //               href: "/menu-levels/level-two-subs/level-three-subs/level-four-subs",
+  //               children: [
+  //                 {
+  //                   id: "level-five",
+  //                   label: "menu-level-five",
+  //                   href: "/menu-levels/level-two-subs/level-three-subs/level-four-subs/level-five",
+  //                 },
+  //               ],
+  //             },
+  //           ],
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
 ];
 
 export const leftMenuBottomItems: MenuItem[] = [
-  {
-    id: "docs",
-    label: "menu-documentation",
-    href: "/docs",
-    icon: "NiDocumentCode",
-    color: "text-primary",
-    children: [
-      {
-        id: "docs-welcome",
-        label: "menu-welcome",
-        href: "/docs/welcome",
-        hideInMenu: true,
-        children: [
-          {
-            id: "docs-introduction",
-            label: "docs-introduction",
-            href: "/docs/welcome/introduction",
-          },
-          {
-            id: "docs-faq",
-            label: "docs-faq",
-            href: "/docs/welcome/faq",
-          },
-          {
-            id: "docs-changelog",
-            label: "docs-changelog",
-            href: "/docs/welcome/changelog",
-          },
-        ],
-      },
-      {
-        id: "docs-getting-started",
-        label: "docs-getting-started",
-        href: "/docs/getting-started",
-        hideInMenu: true,
-        children: [
-          {
-            id: "docs-installation",
-            label: "docs-installation",
-            href: "/docs/getting-started/installation",
-          },
-          {
-            id: "docs-file-structure",
-            label: "docs-file-structure",
-            href: "/docs/getting-started/file-structure",
-          },
-          {
-            id: "docs-routing-and-menu",
-            label: "docs-routing-and-menu",
-            href: "/docs/getting-started/routing-and-menu",
-          },
-          {
-            id: "docs-multi-language",
-            label: "docs-multi-language",
-            href: "/docs/getting-started/multi-language",
-          },
-        ],
-      },
-      {
-        id: "docs-theme",
-        label: "menu-theme",
-        href: "/docs/theme",
-        hideInMenu: true,
-        children: [
-          {
-            id: "docs-settings",
-            label: "docs-settings",
-            href: "/docs/theme/settings",
-          },
-          {
-            id: "docs-theme-provider",
-            label: "docs-theme-provider",
-            href: "/docs/theme/theme-provider",
-          },
-          {
-            id: "docs-styling",
-            label: "docs-styling",
-            href: "/docs/theme/styling",
-          },
-        ],
-      },
-    ],
-  },
-  { id: "settings", label: "menu-settings", href: "/settings", icon: "NiSettings" },
+  // {
+  //   id: "docs",
+  //   label: "menu-documentation",
+  //   href: "/docs",
+  //   icon: "NiDocumentCode",
+  //   color: "text-primary",
+  //   children: [
+  //     {
+  //       id: "docs-welcome",
+  //       label: "menu-welcome",
+  //       href: "/docs/welcome",
+  //       hideInMenu: true,
+  //       children: [
+  //         {
+  //           id: "docs-introduction",
+  //           label: "docs-introduction",
+  //           href: "/docs/welcome/introduction",
+  //         },
+  //         {
+  //           id: "docs-faq",
+  //           label: "docs-faq",
+  //           href: "/docs/welcome/faq",
+  //         },
+  //         {
+  //           id: "docs-changelog",
+  //           label: "docs-changelog",
+  //           href: "/docs/welcome/changelog",
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       id: "docs-getting-started",
+  //       label: "docs-getting-started",
+  //       href: "/docs/getting-started",
+  //       hideInMenu: true,
+  //       children: [
+  //         {
+  //           id: "docs-installation",
+  //           label: "docs-installation",
+  //           href: "/docs/getting-started/installation",
+  //         },
+  //         {
+  //           id: "docs-file-structure",
+  //           label: "docs-file-structure",
+  //           href: "/docs/getting-started/file-structure",
+  //         },
+  //         {
+  //           id: "docs-routing-and-menu",
+  //           label: "docs-routing-and-menu",
+  //           href: "/docs/getting-started/routing-and-menu",
+  //         },
+  //         {
+  //           id: "docs-multi-language",
+  //           label: "docs-multi-language",
+  //           href: "/docs/getting-started/multi-language",
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       id: "docs-theme",
+  //       label: "menu-theme",
+  //       href: "/docs/theme",
+  //       hideInMenu: true,
+  //       children: [
+  //         {
+  //           id: "docs-settings",
+  //           label: "docs-settings",
+  //           href: "/docs/theme/settings",
+  //         },
+  //         {
+  //           id: "docs-theme-provider",
+  //           label: "docs-theme-provider",
+  //           href: "/docs/theme/theme-provider",
+  //         },
+  //         {
+  //           id: "docs-styling",
+  //           label: "docs-styling",
+  //           href: "/docs/theme/styling",
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
+  // {
+  //   id: "settings",
+  //   label: "menu-settings",
+  //   href: "/settings",
+  //   icon: "NiSettings",
+  // },
 ];

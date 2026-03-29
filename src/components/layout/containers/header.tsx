@@ -1,9 +1,9 @@
-import Mode from "../mode/mode";
+// import Mode from "../mode/mode";
 import Notifications from "../notifications/notifications";
-import Search from "../search/search";
-import Shortcuts from "../shortcuts/shortcuts";
+// import Search from "../search/search";
+// import Shortcuts from "../shortcuts/shortcuts";
 import User from "../user/user";
-import VersionSelect from "../version-select/version-select";
+// import VersionSelect from "../version-select/version-select";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -18,10 +18,16 @@ import { cn } from "@/lib/utils";
 import { MenuShowState } from "@/types/types";
 
 export default function Header() {
-  const { showLeftInMobile, showLeftMobileButton, leftPrimaryCurrent, leftShowBackdrop } = useLayoutContext();
+  const {
+    showLeftInMobile,
+    showLeftMobileButton,
+    leftPrimaryCurrent,
+    leftShowBackdrop,
+  } = useLayoutContext();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const [rightButtonsVisibleMobile, setRightButtonsVisibleMobile] = useState(false);
+  const [rightButtonsVisibleMobile, setRightButtonsVisibleMobile] =
+    useState(false);
 
   const handleRightButtonsMobileToggle = () => {
     setRightButtonsVisibleMobile((prevValue) => !prevValue);
@@ -39,7 +45,8 @@ export default function Header() {
         <Box
           className={cn(
             "bg-background-paper absolute inset-0 -z-10 rounded-b-3xl",
-            leftPrimaryCurrent !== MenuShowState.Hide && "rounded-bl-none! rtl:rounded-br-none!",
+            leftPrimaryCurrent !== MenuShowState.Hide &&
+              "rounded-bl-none! rtl:rounded-br-none!",
           )}
         ></Box>
         {/* Left menu button */}
@@ -59,25 +66,33 @@ export default function Header() {
         <Box className="flex h-full flex-1 flex-row items-center gap-4 md:gap-6">
           {/* Logo */}
           <Link to={DEFAULTS.appRoot}>
-            <Logo classNameFull="ms-2 hidden md:block" classNameMobile="ms-2 md:hidden" />
+            <Logo
+              classNameFull="ms-2 hidden md:block"
+              classNameMobile="ms-2 md:hidden"
+            />
           </Link>
 
           {/* Version select */}
-          <Fade in={!rightButtonsVisibleMobile || !isMobile}>
+          {/* <Fade in={!rightButtonsVisibleMobile || !isMobile}>
             <Box>
               <VersionSelect className={cn("sm:flex!", rightButtonsVisibleMobile ? "hidden" : "flex")} />
             </Box>
-          </Fade>
+          </Fade> */}
         </Box>
 
         {/* Right buttons */}
         <Box className="flex flex-row sm:gap-1">
           <Fade in={rightButtonsVisibleMobile || !isMobile}>
-            <Box className={cn("hidden flex-row sm:flex! sm:gap-1", rightButtonsVisibleMobile ? "flex" : "hidden")}>
-              <Search />
-              <Shortcuts />
+            <Box
+              className={cn(
+                "hidden flex-row sm:flex! sm:gap-1",
+                rightButtonsVisibleMobile ? "flex" : "hidden",
+              )}
+            >
+              {/* <Search /> */}
+              {/* <Shortcuts /> */}
               <Notifications />
-              <Mode />
+              {/* <Mode /> */}
             </Box>
           </Fade>
 

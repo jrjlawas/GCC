@@ -8,7 +8,7 @@ import { useLayoutContext } from "@/components/layout/layout-context";
 import { PrimaryItem } from "@/components/layout/menu/primary-item";
 import { SecondaryItem } from "@/components/layout/menu/secondary-item";
 import { DEFAULTS } from "@/config";
-import IllustrationLaunch from "@/icons/illustrations/illustration-launch";
+// import IllustrationLaunch from "@/icons/illustrations/illustration-launch";
 import { cn, isPathMatch } from "@/lib/utils";
 import { leftMenuBottomItems, leftMenuItems } from "@/menu-items";
 import { MenuItem, MenuShowState, MenuType } from "@/types/types";
@@ -40,7 +40,9 @@ export default function LeftMenu() {
 
   const selectedPrimary = useRef<undefined | MenuItem>(undefined);
   const [activeItem, setActiveItem] = useState<MenuItem | undefined>(undefined);
-  const [openedAccordions, setOpenedAccordions] = useState<OpenedAccordion[]>([]);
+  const [openedAccordions, setOpenedAccordions] = useState<OpenedAccordion[]>(
+    [],
+  );
 
   const updateSelectedSecondaryItem = useCallback(() => {
     if (!activeItem?.children) {
@@ -65,9 +67,13 @@ export default function LeftMenu() {
   }, [activeItem, pathname, setMenuSelectedSecondaryItem]);
 
   useEffect(() => {
-    let selectedMenu = leftMenuItems.find((item) => item.href && isPathMatch(pathname, item.href));
+    let selectedMenu = leftMenuItems.find(
+      (item) => item.href && isPathMatch(pathname, item.href),
+    );
     if (!selectedMenu && leftMenuBottomItems) {
-      selectedMenu = leftMenuBottomItems.find((item) => item.href && isPathMatch(pathname, item.href));
+      selectedMenu = leftMenuBottomItems.find(
+        (item) => item.href && isPathMatch(pathname, item.href),
+      );
     }
     selectedPrimary.current = selectedMenu;
     setActiveItem(selectedMenu);
@@ -82,7 +88,12 @@ export default function LeftMenu() {
     if (selectedPrimary.current?.id !== activeItem?.id && !leftShowBackdrop) {
       setLeftShowBackdrop(true);
     }
-  }, [activeItem?.id, selectedPrimary.current?.id, setLeftShowBackdrop, leftShowBackdrop]);
+  }, [
+    activeItem?.id,
+    selectedPrimary.current?.id,
+    setLeftShowBackdrop,
+    leftShowBackdrop,
+  ]);
 
   useEffect(() => {
     const resetCallback = () => {
@@ -103,7 +114,12 @@ export default function LeftMenu() {
     return () => {
       onResetLeft(() => {});
     };
-  }, [onResetLeft, hideLeftSecondary, updateSelectedSecondaryItem, menuSelectedSecondaryItem]);
+  }, [
+    onResetLeft,
+    hideLeftSecondary,
+    updateSelectedSecondaryItem,
+    menuSelectedSecondaryItem,
+  ]);
 
   const handleSelectPrimaryItem = (item: MenuItem) => {
     if (!temporaryShowPrimaryMenu && leftMenuType !== MenuType.SingleLayer) {
@@ -116,7 +132,10 @@ export default function LeftMenu() {
       // Accordion state is now managed by PrimaryItem component
       showLeftSecondary();
       setActiveItem(item);
-    } else if (item.children && item.children.filter((x) => !x.hideInMenu).length > 0) {
+    } else if (
+      item.children &&
+      item.children.filter((x) => !x.hideInMenu).length > 0
+    ) {
       // Primary item is a default menu item with children. Show the sub menu without navigating.
       showLeftSecondary();
       setActiveItem(item);
@@ -150,7 +169,10 @@ export default function LeftMenu() {
     }
   }, [activeItem, hideLeftSecondary, leftSecondaryCurrent]);
 
-  const leftSecondaryDefaultWidth = useMemo(() => DEFAULTS.leftMenuWidth[leftMenuType].secondary, [leftMenuType]);
+  const leftSecondaryDefaultWidth = useMemo(
+    () => DEFAULTS.leftMenuWidth[leftMenuType].secondary,
+    [leftMenuType],
+  );
 
   useEffect(() => {
     updateSelectedSecondaryItem();
@@ -163,7 +185,8 @@ export default function LeftMenu() {
           "flex h-full shrink-0 grow-0 flex-col items-center overflow-x-hidden py-2.5! transition-all duration-(--layout-duration)",
         )}
         style={{
-          ...(leftPrimaryCurrent !== MenuShowState.Hide && leftMenuWidth.primary > 0
+          ...(leftPrimaryCurrent !== MenuShowState.Hide &&
+          leftMenuWidth.primary > 0
             ? { width: `${leftMenuWidth.primary}px` }
             : { width: "0px" }),
         }}
@@ -185,7 +208,8 @@ export default function LeftMenu() {
               "overflow-y-scroll ps-2.5",
           )}
           style={{
-            ...(leftPrimaryCurrent !== MenuShowState.Hide && leftMenuWidth.primary > 0
+            ...(leftPrimaryCurrent !== MenuShowState.Hide &&
+            leftMenuWidth.primary > 0
               ? { width: `${leftMenuWidth.primary}px` }
               : { width: "0px" }),
           }}
@@ -200,7 +224,10 @@ export default function LeftMenu() {
           ) : (
             <>
               <Box
-                className={cn("flex w-full flex-1 flex-col gap-0.5", leftMenuType === MenuType.SingleLayer && "gap-1")}
+                className={cn(
+                  "flex w-full flex-1 flex-col gap-0.5",
+                  leftMenuType === MenuType.SingleLayer && "gap-1",
+                )}
               >
                 {leftMenuItems
                   .filter((x) => !x.hideInMenu)
@@ -263,7 +290,8 @@ export default function LeftMenu() {
           )}
         </Box>
       </Box>
-      {(leftMenuType === MenuType.Comfort || leftMenuType === MenuType.Minimal) && (
+      {(leftMenuType === MenuType.Comfort ||
+        leftMenuType === MenuType.Minimal) && (
         <Box
           className={cn(
             "ltr:shadow-line-left rtl:shadow-line-right flex h-full shrink-0 grow-0 overflow-x-hidden transition-all duration-(--layout-duration)",
@@ -271,7 +299,8 @@ export default function LeftMenu() {
           )}
           style={{
             width:
-              ((activeItem?.children && activeItem?.children.filter((x) => !x.hideInMenu).length > 0) ||
+              ((activeItem?.children &&
+                activeItem?.children.filter((x) => !x.hideInMenu).length > 0) ||
                 activeItem?.content) &&
               leftSecondaryCurrent !== MenuShowState.Hide &&
               leftMenuWidth.secondary > 0
@@ -284,37 +313,45 @@ export default function LeftMenu() {
               <Box className="relative h-full w-full overflow-x-hidden">
                 <Box
                   style={{ width: leftSecondaryDefaultWidth }}
-                  className={cn("absolute flex h-full min-h-full flex-col gap-2 overflow-y-scroll ps-5.5 pe-4 pt-2")}
+                  className={cn(
+                    "absolute flex h-full min-h-full flex-col gap-2 overflow-y-scroll ps-5.5 pe-4 pt-2",
+                  )}
                 >
-                  {!activeItem?.content && !menuSelectedSecondaryItem?.content && (
-                    <>
-                      {activeItem?.label && (
-                        <Typography variant="h6" className={"text-primary mb-4 px-2.5"}>
-                          {t(activeItem?.label)}
-                        </Typography>
-                      )}
-                      <Box className="flex h-full w-full flex-1 flex-col justify-between gap-2">
-                        <>
-                          <Box className="flex w-full flex-1 flex-col gap-1">
-                            {activeItem?.children &&
-                              activeItem?.children?.filter((x) => !x.hideInMenu).length > 0 &&
-                              activeItem?.children
-                                ?.filter((x) => !x.hideInMenu)
-                                .map((item) => (
-                                  <SecondaryItem
-                                    item={item}
-                                    key={`left-menu-secondary-item-${leftMenuType}-${activeItem.id}-${item.id}`}
-                                    indent={0}
-                                    openedAccordions={openedAccordions}
-                                    setOpenedAccordions={setOpenedAccordions}
-                                    onSelect={(item) => {
-                                      setMenuSelectedSecondaryItem(item);
-                                    }}
-                                  />
-                                ))}
-                          </Box>
+                  {!activeItem?.content &&
+                    !menuSelectedSecondaryItem?.content && (
+                      <>
+                        {activeItem?.label && (
+                          <Typography
+                            variant="h6"
+                            className={"text-primary mb-4 px-2.5"}
+                          >
+                            {t(activeItem?.label)}
+                          </Typography>
+                        )}
+                        <Box className="flex h-full w-full flex-1 flex-col justify-between gap-2">
+                          <>
+                            <Box className="flex w-full flex-1 flex-col gap-1">
+                              {activeItem?.children &&
+                                activeItem?.children?.filter(
+                                  (x) => !x.hideInMenu,
+                                ).length > 0 &&
+                                activeItem?.children
+                                  ?.filter((x) => !x.hideInMenu)
+                                  .map((item) => (
+                                    <SecondaryItem
+                                      item={item}
+                                      key={`left-menu-secondary-item-${leftMenuType}-${activeItem.id}-${item.id}`}
+                                      indent={0}
+                                      openedAccordions={openedAccordions}
+                                      setOpenedAccordions={setOpenedAccordions}
+                                      onSelect={(item) => {
+                                        setMenuSelectedSecondaryItem(item);
+                                      }}
+                                    />
+                                  ))}
+                            </Box>
 
-                          <Box
+                            {/* <Box
                             component="a"
                             href="#"
                             className="group flex w-full cursor-pointer flex-col items-center justify-center gap-2"
@@ -326,12 +363,13 @@ export default function LeftMenu() {
                             <Box className="group-hover:bg-primary/10 text-primary rounded-md px-5 py-2 font-medium transition-colors">
                               {t("menu-cta-button")}
                             </Box>
-                          </Box>
-                        </>
-                      </Box>
-                    </>
-                  )}
-                  {(activeItem?.content || menuSelectedSecondaryItem?.content) &&
+                          </Box> */}
+                          </>
+                        </Box>
+                      </>
+                    )}
+                  {(activeItem?.content ||
+                    menuSelectedSecondaryItem?.content) &&
                     (activeItem?.content || menuSelectedSecondaryItem?.content)}
                 </Box>
               </Box>
