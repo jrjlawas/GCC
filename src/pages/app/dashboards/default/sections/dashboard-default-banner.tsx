@@ -1,15 +1,16 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import { Box, Button, Card, CardContent, Typography } from "@mui/material";
 
-import { LINKS } from "@/constants";
+// import { LINKS } from "@/constants";
 import IllustrationConfigure from "@/icons/illustrations/illustration-configure";
-import NiBasket from "@/icons/nexture/ni-basket";
+// import NiBasket from "@/icons/nexture/ni-basket";
 import NiPalette from "@/icons/nexture/ni-palette";
 
 export default function DashboardDefaultBanner() {
   const handleConfigureButtonClick = () => {
-    const themeCustomizationButton = document.getElementById("themeCustomization");
+    const themeCustomizationButton =
+      document.getElementById("themeCustomization");
     if (themeCustomizationButton) {
       themeCustomizationButton.click();
     }
@@ -32,8 +33,9 @@ export default function DashboardDefaultBanner() {
                 component="p"
                 className="text-text-secondary text-center md:text-start xl:max-w-md"
               >
-                Configuring theme colors and background options allows you to personalize the theme. You can also change
-                the menu type, and switch between fluid and boxed layout.
+                Configuring theme colors and background options allows you to
+                personalize the theme. You can also change the menu type, and
+                switch between fluid and boxed layout.
               </Typography>
             </Box>
             <Box className="flex w-full justify-center md:w-6/12 md:justify-end xl:w-4/12">
@@ -52,7 +54,7 @@ export default function DashboardDefaultBanner() {
               Configure
             </Button>
 
-            <Button
+            {/* <Button
               className="mx-auto md:mx-0"
               size="medium"
               color="primary"
@@ -63,7 +65,7 @@ export default function DashboardDefaultBanner() {
               component={Link}
             >
               Buy
-            </Button>
+            </Button> */}
           </Box>
         </CardContent>
       </Card>

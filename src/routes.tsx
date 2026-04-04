@@ -11,6 +11,13 @@ import { MenuItem } from "@/types/types";
 // Statically import all possible pages for build
 const modules = import.meta.glob("./pages/**/page.tsx");
 
+const normalizePath = (path: string) => {
+  // Replace numeric IDs with :websiteId
+  return path
+    .replace(/\/\d+\//g, "/:websiteId/")
+    .replace(/\/\d+$/, "/:websiteId");
+};
+
 // Lazy load page components
 const lazyLoad = (path: string) => {
   // Handle different paths based on the route
@@ -42,6 +49,7 @@ const lazyLoad = (path: string) => {
 // Recursively generate routes from menu items
 const generateRoutesFromMenuItems = (
   menuItems: MenuItem[],
+  routeSet = new Set<string>(),
 ): React.ReactElement[] => {
   return menuItems.flatMap((item: MenuItem) => {
     const routes: React.ReactElement[] = [];
@@ -51,11 +59,23 @@ const generateRoutesFromMenuItems = (
       return [];
     }
 
-    // Add route for current item
-    routes.push(
-      <Route key={item.id} path={item.href} element={lazyLoad(item.href)} />,
-    );
+    const normalizedPath = normalizePath(item.href);
 
+    // Add route for current item
+    // routes.push(
+    //   <Route key={item.id} path={item.href} element={lazyLoad(item.href)} />
+    // );
+    if (!routeSet.has(normalizedPath)) {
+      routeSet.add(normalizedPath);
+
+      routes.push(
+        <Route
+          key={normalizedPath}
+          path={normalizedPath}
+          element={lazyLoad(normalizedPath)}
+        />,
+      );
+    }
     // Add routes for children
     if (item.children && item.children.length > 0) {
       routes.push(...generateRoutesFromMenuItems(item.children));
