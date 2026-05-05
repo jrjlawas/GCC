@@ -12,7 +12,7 @@ export default function DashboardDefaultActivity() {
   return (
     <>
       <Typography variant="h6" component="h6" className="mt-2 mb-3">
-        Activity
+        Activity Logs
       </Typography>
 
       <Card>
@@ -27,7 +27,10 @@ export default function DashboardDefaultActivity() {
                 <Typography variant="subtitle2" className="text-text-primary">
                   Permission Updated
                 </Typography>
-                <Typography variant="body2" className="text-text-secondary line-clamp-1">
+                <Typography
+                  variant="body2"
+                  className="text-text-secondary line-clamp-1"
+                >
                   Olivia updated user permissions for{" "}
                   <Link to="#" className="link-text-secondary">
                     Elijah
@@ -48,7 +51,10 @@ export default function DashboardDefaultActivity() {
                 <Typography variant="subtitle2" className="text-text-primary">
                   User Login
                 </Typography>
-                <Typography variant="body2" className="text-text-secondary line-clamp-1">
+                <Typography
+                  variant="body2"
+                  className="text-text-secondary line-clamp-1"
+                >
                   <Link to="#" className="link-text-secondary">
                     Olivia
                   </Link>{" "}
@@ -69,7 +75,10 @@ export default function DashboardDefaultActivity() {
                 <Typography variant="subtitle2" className="text-text-primary">
                   Product Update
                 </Typography>
-                <Typography variant="body2" className="text-text-secondary line-clamp-1">
+                <Typography
+                  variant="body2"
+                  className="text-text-secondary line-clamp-1"
+                >
                   Charlotte edited product details for{" "}
                   <Link to="#" className="link-text-secondary">
                     Buck Rogers
@@ -90,7 +99,10 @@ export default function DashboardDefaultActivity() {
                 <Typography variant="subtitle2" className="text-text-primary">
                   Refund Process
                 </Typography>
-                <Typography variant="body2" className="text-text-secondary line-clamp-1">
+                <Typography
+                  variant="body2"
+                  className="text-text-secondary line-clamp-1"
+                >
                   James processed refund request for order{" "}
                   <Link to="#" className="link-text-secondary">
                     #10234
@@ -111,7 +123,10 @@ export default function DashboardDefaultActivity() {
                 <Typography variant="subtitle2" className="text-text-primary">
                   Comment Delete
                 </Typography>
-                <Typography variant="body2" className="text-text-secondary line-clamp-1">
+                <Typography
+                  variant="body2"
+                  className="text-text-secondary line-clamp-1"
+                >
                   James deleted flagged{" "}
                   <Link to="#" className="link-text-secondary">
                     comment
@@ -133,7 +148,10 @@ export default function DashboardDefaultActivity() {
                 <Typography variant="subtitle2" className="text-text-primary">
                   Page Publish
                 </Typography>
-                <Typography variant="body2" className="text-text-secondary line-clamp-1">
+                <Typography
+                  variant="body2"
+                  className="text-text-secondary line-clamp-1"
+                >
                   James published a new blog post:{" "}
                   <Link to="#" className="link-text-secondary">
                     Simple Toys for Creativity
@@ -154,7 +172,10 @@ export default function DashboardDefaultActivity() {
                 <Typography variant="subtitle2" className="text-text-primary">
                   Image Update
                 </Typography>
-                <Typography variant="body2" className="text-text-secondary line-clamp-1">
+                <Typography
+                  variant="body2"
+                  className="text-text-secondary line-clamp-1"
+                >
                   James updated{" "}
                   <Link to="#" className="link-text-secondary">
                     website banner
@@ -175,7 +196,10 @@ export default function DashboardDefaultActivity() {
                 <Typography variant="subtitle2" className="text-text-primary">
                   User Login
                 </Typography>
-                <Typography variant="body2" className="text-text-secondary line-clamp-1">
+                <Typography
+                  variant="body2"
+                  className="text-text-secondary line-clamp-1"
+                >
                   <Link to="#" className="link-text-secondary">
                     James
                   </Link>{" "}

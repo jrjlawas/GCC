@@ -1,38 +1,39 @@
-import UserLanguageSwitch from "./user-language-switch";
-import UserModeSwitch from "./user-mode-switch";
-import UserThemeSwitch from "./user-theme-switch";
+// import UserLanguageSwitch from "./user-language-switch";
+// import UserModeSwitch from "./user-mode-switch";
+// import UserThemeSwitch from "./user-theme-switch";
 import { SyntheticEvent, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
+// import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
+  // Accordion,
+  // AccordionDetails,
+  // AccordionSummary,
   Avatar,
-  AvatarGroup,
+  // AvatarGroup,
   Box,
   Card,
   CardContent,
-  Divider,
+  // Divider,
   Fade,
-  ListItemIcon,
+  // ListItemIcon,
   Typography,
 } from "@mui/material";
 import Button from "@mui/material/Button";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
-import MenuItem from "@mui/material/MenuItem";
-import MenuList from "@mui/material/MenuList";
+// import MenuItem from "@mui/material/MenuItem";
+// import MenuList from "@mui/material/MenuList";
 import Popper from "@mui/material/Popper";
 
-import NiBuilding from "@/icons/nexture/ni-building";
-import NiChevronRightSmall from "@/icons/nexture/ni-chevron-right-small";
-import NiDocumentFull from "@/icons/nexture/ni-document-full";
-import NiFolder from "@/icons/nexture/ni-folder";
-import NiQuestionHexagon from "@/icons/nexture/ni-question-hexagon";
-import NiSettings from "@/icons/nexture/ni-settings";
-import NiUser from "@/icons/nexture/ni-user";
-import NiUsers from "@/icons/nexture/ni-users";
+// import NiBuilding from "@/icons/nexture/ni-building";
+// import NiChevronRightSmall from "@/icons/nexture/ni-chevron-right-small";
+// import NiDocumentFull from "@/icons/nexture/ni-document-full";
+// import NiFolder from "@/icons/nexture/ni-folder";
+// import NiQuestionHexagon from "@/icons/nexture/ni-question-hexagon";
+// import NiSettings from "@/icons/nexture/ni-settings";
+// import NiUser from "@/icons/nexture/ni-user";
+// import NiUsers from "@/icons/nexture/ni-users";
 import { cn } from "@/lib/utils";
 
 export default function User() {
@@ -40,23 +41,29 @@ export default function User() {
   const anchorRef = useRef<HTMLButtonElement>(null);
   const { t } = useTranslation();
 
+  const userString = localStorage.getItem("user");
+  const fname = userString ? JSON.parse(userString).firstname : null;
+  const lname = userString ? JSON.parse(userString).lastname : null;
+  const mail = userString ? JSON.parse(userString).email : null;
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
 
   const handleClose = (event: Event | SyntheticEvent) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target as HTMLElement)) {
+    if (
+      anchorRef.current &&
+      anchorRef.current.contains(event.target as HTMLElement)
+    ) {
       return;
     }
     setOpen(false);
   };
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   return (
     <>
       <Box ref={anchorRef}>
-        {/* Desktop button */}
         <Button
           variant="text"
           color="text-primary"
@@ -66,10 +73,12 @@ export default function User() {
           )}
           onClick={handleToggle}
         >
-          <Box>Laura Ellis</Box>
+          <Box>
+            {fname} {lname}
+          </Box>
           <Avatar
             alt="avatar"
-            src="/images/avatars/avatar-3.jpg"
+            src="/images/avatars/default.jpg"
             className={cn(
               "large transition-all group-hover:ms-0.5 group-hover:h-8 group-hover:w-8",
               open && "ms-0.5 h-8! w-8!",
@@ -91,8 +100,11 @@ export default function User() {
           startIcon={
             <Avatar
               alt="avatar"
-              src="/images/avatars/avatar-3.jpg"
-              className={cn("large transition-all group-hover:h-7 group-hover:w-7", open && "h-7! w-7!")}
+              src="/images/avatars/default.jpg"
+              className={cn(
+                "large transition-all group-hover:h-7 group-hover:w-7",
+                open && "h-7! w-7!",
+              )}
             />
           }
         />
@@ -115,16 +127,24 @@ export default function User() {
                   <CardContent>
                     <Box className="max-w-64 sm:w-72 sm:max-w-none">
                       <Box className="mb-4 flex flex-col items-center">
-                        <Avatar alt="avatar" src="/images/avatars/avatar-3.jpg" className="large mb-2" />
+                        <Avatar
+                          alt="avatar"
+                          src="/images/avatars/default.jpg"
+                          className="large mb-2"
+                        />
                         <Typography variant="subtitle1" component="p">
-                          Laura Ellis
+                          {fname} {lname}
                         </Typography>
-                        <Typography variant="body2" component="p" className="text-text-secondary -mt-2">
-                          laura.ellis@gogo.dev
+                        <Typography
+                          variant="body2"
+                          component="p"
+                          className="text-text-secondary -mt-2"
+                        >
+                          {mail}
                         </Typography>
                       </Box>
 
-                      <Box>
+                      {/* <Box>
                         <Accordion>
                           <AccordionSummary className="group">
                             <Button
@@ -134,17 +154,41 @@ export default function User() {
                               color="text-primary"
                               className="full-width-button hover:text-primary group-aria-expanded:text-primary group-aria-expanded:rounded-b-none hover:bg-gray-500/10"
                               startIcon={<NiUsers size={20} />}
-                              endIcon={<NiChevronRightSmall size={20} className="accordion-rotate" />}
+                              endIcon={
+                                <NiChevronRightSmall
+                                  size={20}
+                                  className="accordion-rotate"
+                                />
+                              }
                             >
                               <Box className="flex w-full flex-row items-center justify-between">
                                 <Typography variant="button" component="span">
                                   {t("user-accounts")}
                                 </Typography>
-                                <AvatarGroup max={3} className="tiny transition-opacity group-aria-expanded:opacity-0">
-                                  <Avatar className="tiny" alt="Laura Ellis" src="/images/avatars/avatar-3.jpg" />
-                                  <Avatar className="tiny" alt="Travis Howard" src="/images/avatars/avatar-2.jpg" />
-                                  <Avatar className="tiny" alt="Cindy Baker" src="/images/avatars/avatar-7.jpg" />
-                                  <Avatar className="tiny" alt="Agnes Walker" src="/images/avatars/avatar-4.jpg" />
+                                <AvatarGroup
+                                  max={3}
+                                  className="tiny transition-opacity group-aria-expanded:opacity-0"
+                                >
+                                  <Avatar
+                                    className="tiny"
+                                    alt="Laura Ellis"
+                                    src="/images/avatars/avatar-3.jpg"
+                                  />
+                                  <Avatar
+                                    className="tiny"
+                                    alt="Travis Howard"
+                                    src="/images/avatars/avatar-2.jpg"
+                                  />
+                                  <Avatar
+                                    className="tiny"
+                                    alt="Cindy Baker"
+                                    src="/images/avatars/avatar-7.jpg"
+                                  />
+                                  <Avatar
+                                    className="tiny"
+                                    alt="Agnes Walker"
+                                    src="/images/avatars/avatar-4.jpg"
+                                  />
                                 </AvatarGroup>
                               </Box>
                             </Button>
@@ -153,65 +197,102 @@ export default function User() {
                             <MenuList className="mb-4 p-0">
                               <MenuItem onClick={handleClose}>
                                 <ListItemIcon className="me-2">
-                                  <Avatar className="tiny" alt="Laura Ellis" src="/images/avatars/avatar-3.jpg" />
+                                  <Avatar
+                                    className="tiny"
+                                    alt="Laura Ellis"
+                                    src="/images/avatars/avatar-3.jpg"
+                                  />
                                 </ListItemIcon>
                                 <Box>
                                   <Typography variant="body1" component="div">
                                     Laura Ellis
                                   </Typography>
-                                  <Typography variant="body2" component="div" className="text-text-secondary -mt-1">
+                                  <Typography
+                                    variant="body2"
+                                    component="div"
+                                    className="text-text-secondary -mt-1"
+                                  >
                                     laura@gogo.dev
                                   </Typography>
                                 </Box>
                               </MenuItem>
                               <MenuItem onClick={handleClose}>
                                 <ListItemIcon className="me-2">
-                                  <Avatar className="tiny" alt="Travis Howard" src="/images/avatars/avatar-2.jpg" />
+                                  <Avatar
+                                    className="tiny"
+                                    alt="Travis Howard"
+                                    src="/images/avatars/avatar-2.jpg"
+                                  />
                                 </ListItemIcon>
                                 <Box>
                                   <Typography variant="body1" component="div">
                                     Travis Howard
                                   </Typography>
-                                  <Typography variant="body2" component="div" className="text-text-secondary -mt-1">
+                                  <Typography
+                                    variant="body2"
+                                    component="div"
+                                    className="text-text-secondary -mt-1"
+                                  >
                                     travis@gogo.dev
                                   </Typography>
                                 </Box>
                               </MenuItem>
                               <MenuItem onClick={handleClose}>
                                 <ListItemIcon className="me-2">
-                                  <Avatar className="tiny" alt="Cindy Baker" src="/images/avatars/avatar-7.jpg" />
+                                  <Avatar
+                                    className="tiny"
+                                    alt="Cindy Baker"
+                                    src="/images/avatars/avatar-7.jpg"
+                                  />
                                 </ListItemIcon>
                                 <Box>
                                   <Typography variant="body1" component="div">
                                     Cindy Baker
                                   </Typography>
-                                  <Typography variant="body2" component="div" className="text-text-secondary -mt-1">
+                                  <Typography
+                                    variant="body2"
+                                    component="div"
+                                    className="text-text-secondary -mt-1"
+                                  >
                                     cindy@gogo.dev
                                   </Typography>
                                 </Box>
                               </MenuItem>
                               <MenuItem onClick={handleClose}>
                                 <ListItemIcon className="me-2">
-                                  <Avatar className="tiny" alt="Agnes Walker" src="/images/avatars/avatar-4.jpg" />
+                                  <Avatar
+                                    className="tiny"
+                                    alt="Agnes Walker"
+                                    src="/images/avatars/avatar-4.jpg"
+                                  />
                                 </ListItemIcon>
                                 <Box>
                                   <Typography variant="body1" component="div">
                                     Agnes Walker
                                   </Typography>
-                                  <Typography variant="body2" component="div" className="text-text-secondary -mt-1">
+                                  <Typography
+                                    variant="body2"
+                                    component="div"
+                                    className="text-text-secondary -mt-1"
+                                  >
                                     agnes@gogo.dev
                                   </Typography>
                                 </Box>
                               </MenuItem>
                             </MenuList>
-                            <Button variant="outlined" size="tiny" color="grey" className="w-full">
+                            <Button
+                              variant="outlined"
+                              size="tiny"
+                              color="grey"
+                              className="w-full"
+                            >
                               {t("user-add-account")}
                             </Button>
                           </AccordionDetails>
                         </Accordion>
-                      </Box>
-                      <Divider className="large" />
-                      <MenuList className="p-0">
+                      </Box> */}
+                      {/* <Divider className="large" /> */}
+                      {/* <MenuList className="p-0">
                         <MenuItem
                           onClick={(event) => {
                             handleClose(event);
@@ -285,7 +366,7 @@ export default function User() {
                           </ListItemIcon>
                           {t("user-help")}
                         </MenuItem>
-                      </MenuList>
+                      </MenuList> */}
                       <Box className="my-8"></Box>
                       <Button
                         component={Link}

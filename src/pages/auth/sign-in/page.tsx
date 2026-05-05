@@ -81,7 +81,6 @@ export default function Page() {
     validateOnBlur: false,
     validateOnMount: false,
 
-    // ✅ UPDATED SUBMIT
     onSubmit: async (values) => {
       setLoading(true);
       setApiError("");

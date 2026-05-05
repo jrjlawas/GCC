@@ -1,16 +1,16 @@
-import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+// import { useTranslation } from "react-i18next";
+// import { Link } from "react-router-dom";
 
-import { Box, Button } from "@mui/material";
-
-import { LINKS } from "@/constants";
+import { Box } from "@mui/material";
+//Button
+// import { LINKS } from "@/constants";
 
 export default function Footer() {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
 
   return (
     <Box component="footer" className="flex h-10 items-center justify-center">
-      <Button
+      {/* <Button
         size="tiny"
         color="text-secondary"
         variant="text"
@@ -40,7 +40,7 @@ export default function Footer() {
         target="_blank"
       >
         {t("footer-purchase")}
-      </Button>
+      </Button> */}
     </Box>
   );
 }

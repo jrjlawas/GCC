@@ -1,18 +1,15 @@
-// import Mode from "../mode/mode";
-import Notifications from "../notifications/notifications";
-// import Search from "../search/search";
-// import Shortcuts from "../shortcuts/shortcuts";
+// import Notifications from "../notifications/notifications";
 import User from "../user/user";
-// import VersionSelect from "../version-select/version-select";
-import { useState } from "react";
+// import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { Box, Button, Fade, useMediaQuery, useTheme } from "@mui/material";
+// import { Box, Button, Fade, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
 import { useLayoutContext } from "@/components/layout/layout-context";
 import Logo from "@/components/logo/logo";
 import { DEFAULTS } from "@/config";
-import NiListSquare from "@/icons/nexture/ni-list-square";
+// import NiListSquare from "@/icons/nexture/ni-list-square";
 import NiMenuSplit from "@/icons/nexture/ni-menu-split";
 import { cn } from "@/lib/utils";
 import { MenuShowState } from "@/types/types";
@@ -24,14 +21,13 @@ export default function Header() {
     leftPrimaryCurrent,
     leftShowBackdrop,
   } = useLayoutContext();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const [rightButtonsVisibleMobile, setRightButtonsVisibleMobile] =
-    useState(false);
+  // const theme = useTheme();
+  // const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  // const [rightButtonsVisibleMobile, setRightButtonsVisibleMobile] = useState(false);
 
-  const handleRightButtonsMobileToggle = () => {
-    setRightButtonsVisibleMobile((prevValue) => !prevValue);
-  };
+  // const handleRightButtonsMobileToggle = () => {
+  //   setRightButtonsVisibleMobile((prevValue) => !prevValue);
+  // };
 
   return (
     <Box className="mui-fixed fixed z-20 h-20 w-full" component="header">
@@ -49,7 +45,6 @@ export default function Header() {
               "rounded-bl-none! rtl:rounded-br-none!",
           )}
         ></Box>
-        {/* Left menu button */}
         <Button
           variant="text"
           size="large"
@@ -64,53 +59,36 @@ export default function Header() {
         />
 
         <Box className="flex h-full flex-1 flex-row items-center gap-4 md:gap-6">
-          {/* Logo */}
           <Link to={DEFAULTS.appRoot}>
             <Logo
               classNameFull="ms-2 hidden md:block"
               classNameMobile="ms-2 md:hidden"
             />
           </Link>
-
-          {/* Version select */}
-          {/* <Fade in={!rightButtonsVisibleMobile || !isMobile}>
-            <Box>
-              <VersionSelect className={cn("sm:flex!", rightButtonsVisibleMobile ? "hidden" : "flex")} />
-            </Box>
-          </Fade> */}
         </Box>
-
-        {/* Right buttons */}
-        <Box className="flex flex-row sm:gap-1">
+        {/* <Box className="flex flex-row sm:gap-1">
           <Fade in={rightButtonsVisibleMobile || !isMobile}>
             <Box
               className={cn(
                 "hidden flex-row sm:flex! sm:gap-1",
-                rightButtonsVisibleMobile ? "flex" : "hidden",
+                rightButtonsVisibleMobile ? "flex" : "hidden"
               )}
             >
-              {/* <Search /> */}
-              {/* <Shortcuts /> */}
               <Notifications />
-              {/* <Mode /> */}
             </Box>
           </Fade>
-
-          {/* The button to turn on and off the mobile version of the right buttons and version select */}
           <Button
             variant="text"
             size="large"
             color="text-primary"
             className={cn(
               "icon-only hover-icon-shrink [&.active]:text-primary hover:bg-grey-25 ms-1 sm:hidden",
-              rightButtonsVisibleMobile && "active",
+              rightButtonsVisibleMobile && "active"
             )}
             onClick={handleRightButtonsMobileToggle}
             startIcon={<NiListSquare size={"large"} />}
           />
-        </Box>
-
-        {/* User Avatar and Menu */}
+        </Box> */}
         <User />
       </Box>
     </Box>

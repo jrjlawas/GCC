@@ -10,6 +10,7 @@ import LayoutContextProvider from "@/components/layout/layout-context";
 import Loading from "@/pages/loading";
 import AppRoutes from "@/routes";
 import ThemeProvider from "@/theme/theme-provider";
+
 const App = () => {
   const { i18n } = useTranslation();
   const direction = i18n.language === "ar" ? "rtl" : "ltr";

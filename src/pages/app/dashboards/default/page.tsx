@@ -8,9 +8,9 @@ import DashboardDefaultBanner from "./sections/dashboard-default-banner";
 import dayjs from "dayjs";
 // import dayjs, { Dayjs } from "dayjs";
 import weekday from "dayjs/plugin/weekday";
-// import { useState } from "react";
-import { Link } from "react-router-dom";
 
+// import { useState } from "react";
+// import { Link } from "react-router-dom";
 // import {
 //   Breadcrumbs,
 //   Button,
@@ -50,13 +50,8 @@ export default function Page() {
             Welcome {nickname}!
           </Typography>
           <Breadcrumbs>
-            <Link color="inherit" to="/dashboards/default">
-              Home
-            </Link>
-            <Link color="inherit" to="/dashboards">
-              Dashboards
-            </Link>
-            <Typography variant="body2">Default</Typography>
+            <Typography variant="body2">Home</Typography>
+            <Typography variant="body2">Welcome Page</Typography>
           </Breadcrumbs>
         </Grid>
 
@@ -151,6 +146,9 @@ export default function Page() {
         <Grid size={{ lg: 12, xs: 12 }}>
           <DashboardDefaultBanner />
         </Grid>
+        {/* <Grid size={{ lg: 12, xs: 12 }}>
+          <DashboardDefaultActivity />
+        </Grid> */}
 
         {/* <Grid size={{ lg: 4, xs: 12 }}>
           <DashboardDefaultActions />

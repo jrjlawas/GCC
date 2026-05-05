@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import { Breadcrumbs, Typography } from "@mui/material";
 import { Grid } from "@mui/material";
@@ -13,10 +13,8 @@ export default function Page() {
           Dashboards
         </Typography>
         <Breadcrumbs>
-          <Link color="inherit" to="/dashboards/default">
-            Home
-          </Link>
-          <Typography variant="body2">Dashboards</Typography>
+          <Typography variant="body2">Welcome Page</Typography>
+          <Typography variant="body2">Welcome Page</Typography>
         </Breadcrumbs>
       </Grid>
 
