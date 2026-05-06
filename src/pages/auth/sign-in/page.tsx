@@ -87,7 +87,6 @@ export default function Page() {
 
       try {
         await login(values.username, values.password);
-
         navigate(DEFAULTS.appRoot);
       } catch (error: any) {
         setApiError(error.message || "Login failed");
