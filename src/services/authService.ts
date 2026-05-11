@@ -7,7 +7,7 @@ export const login = async (
   password: string,
 ): Promise<User[]> => {
   const user = await getUsers(clientid, password);
-  console.log(user);
+  console.log(import.meta.env.VITE_API);
   localStorage.setItem("user", JSON.stringify(user[0]));
 
   return user;
