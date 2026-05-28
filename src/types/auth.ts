@@ -20,8 +20,8 @@ export interface LoginResponse {
   token: string;
 }
 
-export interface WebApplications {
-  id: number;
-  webname: string;
-  desc?: string;
-}
+// export interface WebApplications {
+//   id: number;
+//   webname: string;
+//   desc?: string;
+// }

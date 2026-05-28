@@ -1,4 +1,3 @@
-// import { loginApi } from "../api/authApi";
 import { getUsers } from "../api/authApi";
 
 import { User } from "@/types/auth";
@@ -7,14 +6,8 @@ export const login = async (
   password: string,
 ): Promise<User[]> => {
   const user = await getUsers(clientid, password);
-  console.log(import.meta.env.VITE_API);
   localStorage.setItem("user", JSON.stringify(user[0]));
-
   return user;
-  // const { user, token } = await loginApi(email, password);
-  // localStorage.setItem("user", JSON.stringify(user));
-  // localStorage.setItem("token", token);
-  // return user;
 };
 
 export const logout = (): void => {

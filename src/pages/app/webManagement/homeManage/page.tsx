@@ -10,6 +10,10 @@
 // import TextFieldValidation from "./examples/text-field-validation";
 // import { Link } from "react-router-dom";
 
+// import WebInfo from "./elements/web-info";
+import DisabledPage from "../disabledPage/page";
+
+// import a from "../../../not-found";
 import { Breadcrumbs, Typography } from "@mui/material";
 import { Grid } from "@mui/material";
 
@@ -18,24 +22,16 @@ export default function TextFieldPage() {
     <Grid container spacing={5}>
       <Grid size={12} className="mb-2">
         <Typography variant="h1" component="h1" className="mb-0">
-          Text Field
+          Website Information
         </Typography>
         <Breadcrumbs>
-          <Typography variant="body2">Web Applications</Typography>
+          <Typography variant="body2">Web Management</Typography>
           <Typography variant="body2">Smileys Resto</Typography>
-          <Typography variant="body2">Homepage Data</Typography>
+          <Typography variant="body2">Information</Typography>
         </Breadcrumbs>
       </Grid>
-      {/* <TextFieldStandard />
-      <TextFieldStandardOutlined />
-      <TextFieldFilled />
-      <TextFieldOutlined />
-      <TextFieldFormProps />
-      <TextFieldValidation />
-      <TextFieldMultiline />
-      <TextFieldInputAdornments />
-      <TextFieldIcons />
-      <TextFieldMask /> */}
+      {/* <WebInfo /> */}
+      <DisabledPage />
     </Grid>
   );
 }

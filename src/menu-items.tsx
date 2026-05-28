@@ -2,7 +2,7 @@ import { MenuItem } from "@/types/types";
 
 export const leftMenuItems: MenuItem[] = [
   {
-    id: "dashboards",
+    id: "1",
     icon: "NiHome",
     label: "Home",
     description: "menu-dashboards-description",
@@ -35,8 +35,15 @@ export const leftMenuItems: MenuItem[] = [
         children: [
           {
             id: "homeManage",
-            label: "Home Data",
+            label: "Web Info",
             href: "/webManagement/homeManage",
+            description: "menu-autocomplete-description",
+            listIcon: "NiSelect",
+          },
+          {
+            id: "homeItems",
+            label: "Product Lists",
+            href: "/webManagement/homeProducts",
             description: "menu-autocomplete-description",
             listIcon: "NiSelect",
           },
